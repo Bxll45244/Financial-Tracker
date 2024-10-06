@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { useFinancialRecord } from '../../contexts/financial.context';
 
 const FinancialRecordTable = () => {
@@ -26,11 +26,11 @@ const FinancialRecordTable = () => {
     setEditRecord(null);
   };
 
-
   return (
     <div className="overflow-x-auto mt-4 pb-6">
-      <table className="min-w-full table-auto border-collapse bg-[#F5EDED] shadow-md rounded-lg mb-4">
-        <thead className="bg-[#7FA1C3] text-white">
+      <h1 className="text-2xl font-semibold mb-4 text-[#6482AD]">Financial Records</h1>
+      <table className="min-w-full table-auto border-collapse bg-[#FAFAFA] shadow-md rounded-lg mb-4">
+        <thead className="bg-[#6482AD] text-white">
           <tr>
             <th className="px-4 py-2 border-b-2 text-left">User ID</th>
             <th className="px-4 py-2 border-b-2 text-left">Description</th>
@@ -42,30 +42,36 @@ const FinancialRecordTable = () => {
           </tr>
         </thead>
         <tbody>
-          {records.map((record, index) => (
-            <tr key={record.id || index} className="bg-[#E2DAD6] hover:bg-[#F5EDED]">
-              <td className="px-4 py-2 border-b">{record.userId}</td>
-              <td className="px-4 py-2 border-b">{record.description}</td>
-              <td className="px-4 py-2 border-b">{record.date}</td>
-              <td className="px-4 py-2 border-b">{record.amount}</td>
-              <td className="px-4 py-2 border-b">{record.category}</td>
-              <td className="px-4 py-2 border-b">{record.paymentMethod}</td>
-              <td className="px-4 py-2 border-b">
-                <button
-                  onClick={() => handleEdit(record)}
-                  className="bg-[#6482AD] text-white px-3 py-1 rounded mr-2 hover:bg-[#7FA1C3]"
-                >
-                  Edit
-                </button>
-                <button
-                  onClick={() => handleDelete(record.id)}
-                  className="bg-[#6482AD] text-white px-3 py-1 rounded hover:bg-[#7FA1C3]"
-                >
-                  Delete
-                </button>
-              </td>
+          {records.length === 0 ? (
+            <tr>
+              <td colSpan="7" className="text-center py-4">No records found.</td>
             </tr>
-          ))}
+          ) : (
+            records.map((record, index) => (
+              <tr key={record.id || index} className="bg-[#F0F4FA] hover:bg-[#F5EDED]">
+                <td className="px-4 py-2 border-b">{record.userId}</td>
+                <td className="px-4 py-2 border-b">{record.description}</td>
+                <td className="px-4 py-2 border-b">{record.date}</td>
+                <td className="px-4 py-2 border-b">{record.amount}</td>
+                <td className="px-4 py-2 border-b">{record.category}</td>
+                <td className="px-4 py-2 border-b">{record.paymentMethod}</td>
+                <td className="px-4 py-2 border-b">
+                  <button
+                    onClick={() => handleEdit(record)}
+                    className="bg-[#7FA1C3] text-white px-3 py-1 rounded mr-2 hover:bg-[#6482AD]"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    onClick={() => handleDelete(record.id)}
+                    className="bg-[#7FA1C3] text-white px-3 py-1 rounded hover:bg-[#6482AD]"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))
+          )}
         </tbody>
       </table>
 
@@ -83,7 +89,8 @@ const FinancialRecordTable = () => {
                 value={editRecord.description}
                 onChange={(e) => setEditRecord({ ...editRecord, description: e.target.value })}
                 placeholder="Description"
-                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#F5EDED]"
+                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#FAFAFA]"
+                required
               />
             </div>
 
@@ -93,7 +100,8 @@ const FinancialRecordTable = () => {
                 type="date"
                 value={editRecord.date}
                 onChange={(e) => setEditRecord({ ...editRecord, date: e.target.value })}
-                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#F5EDED]"
+                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#FAFAFA]"
+                required
               />
             </div>
 
@@ -104,7 +112,8 @@ const FinancialRecordTable = () => {
                 value={editRecord.amount}
                 onChange={(e) => setEditRecord({ ...editRecord, amount: e.target.value })}
                 placeholder="Amount"
-                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#F5EDED]"
+                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#FAFAFA]"
+                required
               />
             </div>
 
@@ -113,7 +122,8 @@ const FinancialRecordTable = () => {
               <select
                 value={editRecord.category}
                 onChange={(e) => setEditRecord({ ...editRecord, category: e.target.value })}
-                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#F5EDED]"
+                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#FAFAFA]"
+                required
               >
                 <option value="">Select Category</option>
                 <option value="อาหาร">อาหาร</option>
@@ -132,7 +142,8 @@ const FinancialRecordTable = () => {
               <select
                 value={editRecord.paymentMethod}
                 onChange={(e) => setEditRecord({ ...editRecord, paymentMethod: e.target.value })}
-                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#F5EDED]"
+                className="border border-[#7FA1C3] px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#6482AD] bg-[#FAFAFA]"
+                required
               >
                 <option value="">Select Payment Method</option>
                 <option value="cash">Cash</option>
@@ -164,6 +175,6 @@ const FinancialRecordTable = () => {
       )}
     </div>
   );
-}; 
+};
 
 export default FinancialRecordTable;

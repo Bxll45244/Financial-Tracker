@@ -2,7 +2,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 import financialservice from "../service/financial.service";
 import { useUser } from "@clerk/clerk-react";
 
-// เปลี่ยนชื่อ Context ให้ถูกต้อง
+
 export const FinancialRecordContext = createContext();
 
 export const FinancialRecordsProvider = ({ children }) => {
@@ -72,5 +72,5 @@ export const FinancialRecordsProvider = ({ children }) => {
     );
 };
 
-// ส่งออก hook สำหรับการใช้ context
+
 export const useFinancialRecord = () => useContext(FinancialRecordContext);

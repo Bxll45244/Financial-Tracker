@@ -1,25 +1,30 @@
-// import React from "react";
 import { useUser } from "@clerk/clerk-react";
 import { useFinancialRecord } from "../../contexts/financial.context";
 import AddRecordForm from "./AddRecordForm";
 import FinancialRecordTable from "./FinancialRecordTable";
+import { useMemo } from "react";
 
 const Dashboard = () => {
   const { user } = useUser();
-  const { records } = useFinancialRecord() || { records: [] }; // ให้ค่าเริ่มต้นเป็น array ว่างๆ
+  const { records, error } = useFinancialRecord() || { records: [] };
 
-  // คำนวณยอดรวมรายเดือน
-  const totalMonthly = records.reduce((total, record) => {
-    const recordDate = new Date(record.date);
-    const currentMonth = new Date().getMonth();
-    const currentYear = new Date().getFullYear();
+  if (error) {
+    return <div>Error loading financial records: {error.message}</div>;
+  }
 
-    if (recordDate.getMonth() === currentMonth && recordDate.getFullYear() === currentYear) {
-      return total + parseFloat(record.amount);
-    }
+  const totalMonthly = useMemo(() => {
+    return records.reduce((total, record) => {
+      const recordDate = new Date(record.date);
+      const currentMonth = new Date().getMonth();
+      const currentYear = new Date().getFullYear();
 
-    return total;
-  }, 0).toFixed(2);
+      if (recordDate.getMonth() === currentMonth && recordDate.getFullYear() === currentYear) {
+        return total + parseFloat(record.amount);
+      }
+
+      return total;
+    }, 0).toFixed(2);
+  }, [records]);
 
   return (
     <div className="max-w-screen-2xl container mx-auto xl:px-24 px-4">

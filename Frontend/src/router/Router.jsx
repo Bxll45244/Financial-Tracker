@@ -1,7 +1,7 @@
-import { createBrowserRouter } from "react-router-dom"; // Import createBrowserRouter
+import { createBrowserRouter } from "react-router-dom"; 
 import MainLayout from "../layoust/MainLayout.jsx";
 import Add from "../pages/Add.jsx";
-import Home from "../pages/Home.jsx"; // Make sure Home and Layout are imported
+import Home from "../pages/Home.jsx"; 
 import Dashbard from "../pages/dashboard";
 
 const router = createBrowserRouter([
@@ -10,16 +10,16 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       {
-        path: "/", // Main route of the application
-        element: <Home />, // Displays the Home component for '/'
+        path: "/", 
+        element: <Home />, 
       },
       {
-        path: "dashboard", // Main route of the application
-        element: <Dashbard />, // Displays the Home component for '/'
+        path: "dashboard", 
+        element: <Dashbard />, 
       },
       {
-        path: "/add", // Route for adding an item
-        element: <Add />, // Displays the Add component for '/add'
+        path: "/add", 
+        element: <Add />, 
       },
     ],
   },

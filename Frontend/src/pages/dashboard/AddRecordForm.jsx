@@ -1,4 +1,3 @@
-
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
@@ -60,18 +59,18 @@ const AddRecordForm = () => {
   };
 
   return (
-    <div className="bg-[#F5EDED] p-6 rounded-lg shadow-lg max-w-md mx-auto">
-      <h2 className="text-2xl font-bold text-[#6482AD] mb-6">Add Financial Record</h2>
+    <div className="bg-black p-6 rounded-lg shadow-lg max-w-md mx-auto">
+      <h2 className="text-2xl font-bold text-white mb-6">Add Financial Record</h2>
 
       <form onSubmit={handleSubmit}>
         <div className="mb-4">
-          <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">Category</label>
+          <label htmlFor="category" className="block text-sm font-medium text-white mb-1">Category</label>
           <select
             id="category"
             name="category"
             value={financial.category}
             onChange={handleChange}
-            className="mt-1 block w-full p-3 border border-[#7FA1C3] rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#6482AD]"
+            className="mt-1 block w-full p-3 border border-gray-600 rounded-md bg-[#1f2937] text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
             required
           >
             <option value="">Select Category</option>
@@ -87,54 +86,54 @@ const AddRecordForm = () => {
         </div>
 
         <div className="mb-4">
-          <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">Date</label>
+          <label htmlFor="date" className="block text-sm font-medium text-white mb-1">Date</label>
           <input
             type="date"
             id="date"
             name="date"
             value={financial.date}
             onChange={handleChange}
-            className="mt-1 block w-full p-3 border border-[#7FA1C3] rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#6482AD]"
+            className="mt-1 block w-full p-3 border border-gray-600 rounded-md bg-[#1f2937] text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">Description</label>
+          <label htmlFor="description" className="block text-sm font-medium text-white mb-1">Description</label>
           <input
             type="text"
             id="description"
             name="description"
             value={financial.description}
             onChange={handleChange}
-            className="mt-1 block w-full p-3 border border-[#7FA1C3] rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#6482AD]"
+            className="mt-1 block w-full p-3 border border-gray-600 rounded-md bg-[#1f2937] text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
             placeholder="Enter Description"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="amount" className="block text-sm font-medium text-gray-700 mb-1">Amount</label>
+          <label htmlFor="amount" className="block text-sm font-medium text-white mb-1">Amount</label>
           <input
             type="number"
             id="amount"
             name="amount"
             value={financial.amount}
             onChange={handleChange}
-            className="mt-1 block w-full p-3 border border-[#7FA1C3] rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#6482AD]"
+            className="mt-1 block w-full p-3 border border-gray-600 rounded-md bg-[#1f2937] text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
             placeholder="Enter Amount"
             required
           />
         </div>
 
         <div className="mb-4">
-          <label htmlFor="paymentMethod" className="block text-sm font-medium text-gray-700 mb-1">Payment Method</label>
+          <label htmlFor="paymentMethod" className="block text-sm font-medium text-white mb-1">Payment Method</label>
           <select
             id="paymentMethod"
             name="paymentMethod"
             value={financial.paymentMethod}
             onChange={handleChange}
-            className="mt-1 block w-full p-3 border border-[#7FA1C3] rounded-md bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#6482AD]"
+            className="mt-1 block w-full p-3 border border-gray-600 rounded-md bg-[#1f2937] text-white focus:outline-none focus:ring-2 focus:ring-gray-500"
             required
           >
             <option value="">Select Payment Method</option>
@@ -147,7 +146,7 @@ const AddRecordForm = () => {
 
         <button
           type="submit"
-          className="w-full bg-[#6482AD] text-white py-3 rounded-md hover:bg-[#7FA1C3] focus:outline-none focus:ring-2 focus:ring-[#7FA1C3]"
+          className="w-full bg-gray-700 text-white py-3 rounded-md hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600"
         >
           Add Record
         </button>
